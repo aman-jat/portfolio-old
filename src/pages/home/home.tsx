@@ -9,7 +9,6 @@ import {
   Instagram,
   KeyboardArrowDownRounded,
   LightbulbRounded,
-  LinkedCameraOutlined,
   LinkedIn,
   RocketLaunchRounded,
   SendRounded,
@@ -25,6 +24,19 @@ import {
   Typography,
 } from '@mui/material'
 import dp from '../../assets/images/IMG_20201207_170759.jpg'
+import react from '../../assets/images/react.png'
+import angular from '../../assets/images/angular.png'
+import vite from '../../assets/images/vite.png'
+import laravel from '../../assets/images/laravel.png'
+import node from '../../assets/images/node.png'
+import mysql from '../../assets/images/mysql.png'
+import html from '../../assets/images/html.png'
+import css from '../../assets/images/css.png'
+import javascript from '../../assets/images/javascript.png'
+import typescript from '../../assets/images/typescript.png'
+import mui from '../../assets/images/mui.png'
+import github from '../../assets/images/github.png'
+
 import theme from '../../styles/theme'
 
 const Home = () => {
@@ -64,52 +76,52 @@ const Home = () => {
 
   const itemData = [
     {
-      img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
+      img: react,
       title: 'Breakfast',
     },
     {
-      img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
+      img: angular,
       title: 'Burger',
     },
     {
-      img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
+      img: vite,
       title: 'Camera',
     },
     {
-      img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-      title: 'Coffee',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-      title: 'Hats',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
-      title: 'Honey',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
-      title: 'Basketball',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
-      title: 'Fern',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1597645587822-e99fa5d45d25',
-      title: 'Mushrooms',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
+      img: typescript,
       title: 'Tomato basil',
     },
     {
-      img: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
-      title: 'Sea star',
+      img: laravel,
+      title: 'Coffee',
     },
     {
-      img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
+      img: node,
+      title: 'Hats',
+    },
+    {
+      img: mysql,
+      title: 'Honey',
+    },
+    {
+      img: github,
       title: 'Bike',
+    },
+    {
+      img: html,
+      title: 'Basketball',
+    },
+    {
+      img: css,
+      title: 'Fern',
+    },
+    {
+      img: javascript,
+      title: 'Mushrooms',
+    },
+    {
+      img: mui,
+      title: 'Sea star',
     },
   ]
 
@@ -186,11 +198,10 @@ const Home = () => {
           <Typography variant='h3'>A LITTLE ABOUT ME</Typography>
           <img style={{ borderRadius: '50%' }} src={dp} alt={'display picture'} height={200} />
           <Typography textAlign='center'>
-            Hey! My name is Brittany and I'm a web developer with a passion for front end
-            development and design. I'm currently a third year student at Northeastern University
-            pursuing a degree in information science with a minor in interaction design. I aspire
-            toward a career that will allow me to channel my creativity through crafting beautiful
-            software and engaging experiences.
+            Hey! My name is Aman and I'm a full stack developer and software engineer with a passion
+            for developement and engineering code. I'm currently a working as same at Sleeksky
+            Technology Pvt Ltd. I aspire toward a career that will allow me to channel my creativity
+            through crafting beautiful software and engaging experiences.
           </Typography>
           <Typography textAlign='center'>
             When I'm not on the computer, I enjoy snowboarding, swimming, and petting dogs.
@@ -264,7 +275,7 @@ const Home = () => {
         <Stack px={10} direction='column' alignItems='center' gap={4}>
           <Typography variant='h3'> EXPERIENCE </Typography>
           <Typography textAlign='center'>
-            I've been doing web developement for about 3 years now, and I'm always eager to learn
+            I've been doing full stack developement for 2+ years now, and I'm always eager to learn
             more in this fast paced industry
           </Typography>
         </Stack>
@@ -273,7 +284,7 @@ const Home = () => {
             <Typography variant='h5'>SOME TECHNOLOGIES I'VE WORKED WITH</Typography>
             <ImageList sx={{ width: 500, height: 500 }} cols={4} rowHeight={120}>
               {itemData.map((item) => (
-                <ImageListItem key={item.img}>
+                <ImageListItem sx={{ p: 3 }} key={item.img}>
                   <img
                     src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
                     srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
@@ -284,7 +295,7 @@ const Home = () => {
               ))}
             </ImageList>
           </Stack>
-          <Stack direction='column' alignItems='ceter'>
+          {/* <Stack direction='column' alignItems='ceter'>
             <Typography variant='h5'>WHERE I'VE WORKED</Typography>
             <ImageList gap={2} sx={{ width: 190, height: 400 }} cols={1} rowHeight={120}>
               {item2.map((item) => (
@@ -298,7 +309,7 @@ const Home = () => {
                 </ImageListItem>
               ))}
             </ImageList>
-          </Stack>
+          </Stack> */}
         </Stack>
       </Stack>
 
