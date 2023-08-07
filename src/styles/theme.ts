@@ -32,7 +32,7 @@ const colorTheme = createTheme({
       disabled: '#9FA4AC',
     },
     background: {
-      default: '#FFFFFF',
+      default: '#00000030',
       paper: '#F6F8FB',
     },
     action: {
@@ -99,8 +99,9 @@ const theme = createTheme(colorTheme, {
     },
     h4: {
       fontFamily: 'Lato',
+      fontWeight: 400,
       fontSize: 20,
-      fontWeight: 300,
+      textTransform: 'uppercase',
       letterSpacing: '1px',
     },
     h5: {
