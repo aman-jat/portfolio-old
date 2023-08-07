@@ -36,13 +36,13 @@ import javascript from '../../assets/images/javascript.png'
 import typescript from '../../assets/images/typescript.png'
 import mui from '../../assets/images/mui.png'
 import github from '../../assets/images/github.png'
-
+import './home.css'
 import theme from '../../styles/theme'
 
 const Home = () => {
   const HeaderLink = ({ children }: any) => {
     return (
-      <Link underline='none' sx={{ cursor: 'pointer' }}>
+      <Link underline='none' sx={{ color: theme.palette.common.white, cursor: 'pointer' }}>
         <Typography variant='h6'>{children}</Typography>
       </Link>
     )
@@ -72,6 +72,7 @@ const Home = () => {
           polo team, the resident student association, and the ski and snowboard club.`,
     },
   ]
+
   const headerOptions = ['About', 'Passion', 'Experience', 'Work', 'Contact']
 
   const itemData = [
@@ -147,13 +148,28 @@ const Home = () => {
       url: 'https://www.instagram.com',
     },
   ]
-
   return (
     <>
       {/* // header */}
-      <Stack p={4} direction='row' justifyContent='space-between' alignItems='baseline'>
-        <Stack>
-          <Typography variant='h5'>Aman Jat</Typography>
+
+      <Stack
+        sx={{
+          width: '100%',
+          position: 'fixed',
+          backgroundColor: 'rgba(0,0,0,0.6)',
+          backdropFilter: 'blur(3px)',
+          boxShadow: ' 0 0 12px 0 rgba(0, 0, 0, 0.5)',
+        }}
+        px={4}
+        py={2}
+        direction='row'
+        justifyContent='space-between'
+        alignItems='baseline'
+      >
+        <Stack sx={{ cursor: 'pointer' }}>
+          <Typography sx={{ color: theme.palette.common.white }} variant='h4'>
+            Aman Jat
+          </Typography>
         </Stack>
         <Stack gap={4} direction='row'>
           {headerOptions.map((item) => (
@@ -163,7 +179,7 @@ const Home = () => {
       </Stack>
 
       {/* // first page */}
-      <Stack sx={{ backgroundColor: '#00000050' }} height='80vh'>
+      <Stack mt={7} sx={{ backgroundColor: '#00000050' }} height='100vh'>
         <Stack height='100vh' justifyContent='center' alignItems='center'>
           <Typography variant='h2'>HI, I'M AMAN JAT</Typography>
           <Typography>Full Stack Developer & Code Enthusiast</Typography>
@@ -328,8 +344,8 @@ const Home = () => {
       <Stack
         sx={{ backgroundColor: theme.palette.common.black }}
         gap={5}
+        py={5}
         alignItems='center'
-        p={10}
       >
         <Stack direction='row' gap={0.5}>
           {socialMedia.map((item) => {
