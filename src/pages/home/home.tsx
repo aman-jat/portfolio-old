@@ -38,6 +38,8 @@ import mui from '../../assets/images/mui.png'
 import github from '../../assets/images/github.png'
 import './home.css'
 import theme from '../../styles/theme'
+import image from '../../assets/images/background.jpg'
+import { useEffect, useRef, useState } from 'react'
 
 const Home = () => {
   const HeaderLink = ({ children }: any) => {
@@ -133,35 +135,121 @@ const Home = () => {
     },
     {
       icon: <YouTube />,
-      url: 'https://www.instagram.com',
+      url: 'https://www.youtube.com',
     },
     {
       icon: <Facebook />,
-      url: 'https://www.instagram.com',
+      url: 'https://www.facebook.com',
     },
     {
       icon: <GitHub />,
-      url: 'https://www.instagram.com',
+      url: 'https://www.github.com',
     },
     {
       icon: <LinkedIn />,
-      url: 'https://www.instagram.com',
+      url: 'https://www.linkedIn.com',
     },
   ]
+
+  const [showBox1, setShowBox1] = useState(false)
+  const [showBox2, setShowBox2] = useState(false)
+  const [showBox3, setShowBox3] = useState(false)
+  const [headerX, setHeaderX] = useState(false)
+
+  const observerRef = useRef(null)
+  const firstpageObserverRef = useRef(null)
+  const paddingElementRef = useRef(null)
+
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5, // Intersection threshold, adjust as needed
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // setShowBox1(true)
+          // setShowBox2(true)
+          // setShowBox3(true)
+          let delay = 100 // Initial delay of 1 second
+          ;[1, 2, 3].forEach((key) => {
+            setTimeout(() => {
+              switch (key) {
+                case 1:
+                  setShowBox1(true)
+                  break
+                case 2:
+                  setShowBox2(true)
+                  break
+                case 3:
+                  setShowBox3(true)
+                  break
+              }
+            }, delay)
+
+            delay += 200 // Increase delay by 1 second for each box
+          })
+          observer.unobserve(entry.target)
+        }
+      })
+    }, options)
+    const firstpageObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const el: any = (paddingElementRef as any).current.style
+          if (entry.intersectionRatio >= 0.8) {
+            el.padding = '20px'
+            el.backgroundColor = 'transparent'
+            el.boxShadow = 'none'
+            el.backdropFilter = 'none'
+          } else {
+            observer.unobserve(entry.target)
+            el.padding = '10px'
+            el.backgroundColor = 'rgba(0,0,0,0.6)'
+            el.boxShadow = '0 0 12px 0 rgba(256, 256, 256, 0.5)'
+            el.backdropFilter = 'blur(2.5px)'
+          }
+        })
+      },
+      {
+        root: null,
+        rootMargin: '0px', // Adjust the rootMargin to control when the callback is triggered
+        threshold: 0.8,
+      }
+    )
+
+    if (observerRef.current) {
+      observer.observe(observerRef.current)
+    }
+    if (firstpageObserverRef.current) {
+      firstpageObserver.observe(firstpageObserverRef.current)
+    }
+
+    return () => {
+      if (observerRef.current) {
+        observer.unobserve(observerRef.current)
+      }
+      if (firstpageObserverRef.current) {
+        firstpageObserver.unobserve(firstpageObserverRef.current)
+      }
+    }
+  }, [])
+
   return (
     <>
       {/* // header */}
-
       <Stack
+        ref={paddingElementRef}
         sx={{
+          zIndex: 99999,
           width: '100%',
           position: 'fixed',
-          backgroundColor: 'rgba(0,0,0,0.6)',
-          backdropFilter: 'blur(3px)',
-          boxShadow: ' 0 0 12px 0 rgba(0, 0, 0, 0.5)',
+          backdropFilter: 'blur(2.5px)',
+          padding: '20px',
+          transition: 'background .5s ease-in-out, padding .5s ease-in-out',
         }}
-        px={4}
-        py={2}
         direction='row'
         justifyContent='space-between'
         alignItems='baseline'
@@ -173,16 +261,65 @@ const Home = () => {
         </Stack>
         <Stack gap={4} direction='row'>
           {headerOptions.map((item) => (
-            <HeaderLink>{item}</HeaderLink>
+            <HeaderLink key={item}>{item}</HeaderLink>
           ))}
         </Stack>
       </Stack>
 
       {/* // first page */}
-      <Stack mt={7} sx={{ backgroundColor: '#00000050' }} height='100vh'>
+      <Stack
+        ref={firstpageObserverRef}
+        sx={{ backgroundImage: `url(${image})`, backgroundSize: 'cover' }}
+        height='100vh'
+      >
         <Stack height='100vh' justifyContent='center' alignItems='center'>
-          <Typography variant='h2'>HI, I'M AMAN JAT</Typography>
-          <Typography>Full Stack Developer & Code Enthusiast</Typography>
+          <Typography
+            sx={{
+              color: theme.palette.common.white,
+              opacity: 0,
+              animationName: 'fadeInDown',
+              animationDuration: '1s',
+              animationFillMode: 'both',
+              animationDelay: '0.5s',
+              '-webkit-animation-delay': '0.5s',
+              '@keyframes fadeInDown': {
+                from: {
+                  opacity: 0,
+                  transform: 'translate3d(0, -100%, 0)',
+                },
+                to: {
+                  opacity: 1,
+                  transform: 'none',
+                },
+              },
+            }}
+            variant='h2'
+          >
+            HI, I'M AMAN JAT
+          </Typography>
+          <Typography
+            sx={{
+              color: theme.palette.common.white,
+              opacity: 0,
+              animationName: 'fadeInUp',
+              animationDuration: '1s',
+              animationFillMode: 'both',
+              animationDelay: '0.5s',
+              '-webkit-animation-delay': '0.5s',
+              '@keyframes fadeInUp': {
+                from: {
+                  opacity: 0,
+                  transform: 'translate3d(0, 100%, 0)',
+                },
+                to: {
+                  opacity: 1,
+                  transform: 'none',
+                },
+              },
+            }}
+          >
+            Full Stack Developer & Code Enthusiast
+          </Typography>
         </Stack>
         <Stack justifyContent='center' alignItems='center'>
           <HeaderLink>
@@ -192,7 +329,7 @@ const Home = () => {
       </Stack>
 
       {/* second page - little about me */}
-      <Stack p={2} px={10} height='100vh' alignItems='center'>
+      <Stack p={2} px={10} height='95vh' alignItems='center'>
         <Stack
           maxWidth={800}
           height='100%'
@@ -203,10 +340,10 @@ const Home = () => {
           <Typography variant='h3'>A LITTLE ABOUT ME</Typography>
           <img style={{ borderRadius: '50%' }} src={dp} alt={'display picture'} height={200} />
           <Typography textAlign='center'>
-            Hey! My name is Aman and I'm a full stack developer and software engineer with a passion
-            for developement and engineering code. I'm currently a working as same at Sleeksky
-            Technology Pvt Ltd. I aspire toward a career that will allow me to channel my creativity
-            through crafting beautiful software and engaging experiences.
+            Hey! My name is Aman and I'm a <b>full stack developer</b> and <b>software engineer</b>{' '}
+            with a passion for developement and engineering code. I'm currently a working as same at
+            Sleeksky Technology Pvt Ltd. I aspire toward a career that will allow me to channel my
+            creativity through crafting beautiful software and engaging experiences.
           </Typography>
           <Typography textAlign='center'>
             When I'm not on the computer, I enjoy snowboarding, swimming, and petting dogs.
@@ -239,7 +376,7 @@ const Home = () => {
         </Stack>
       </Stack>
 
-      {/* third page */}
+      {/* third page - what I do */}
       <Stack
         sx={{ backgroundColor: theme.palette.primary.light }}
         p={2}
@@ -250,21 +387,53 @@ const Home = () => {
         gap={4}
       >
         <Typography variant='h3'> What I do</Typography>
-        <Stack direction='row'>
+        <Stack ref={observerRef} direction='row'>
           {thirdpagedata.map((item, index) => {
+            let shouldShow = false
+
+            switch (index) {
+              case 0:
+                shouldShow = showBox1
+                break
+              case 1:
+                shouldShow = showBox2
+                break
+              case 2:
+                shouldShow = showBox3
+                break
+            }
+
             return (
-              <Stack alignItems='center' gap={2}>
+              <Stack
+                className={`fade-box ${shouldShow ? 'show' : ''}`}
+                key={index}
+                alignItems='center'
+                gap={2}
+              >
                 <Stack
                   borderRadius='50%'
                   p={8}
-                  sx={{ backgroundColor: theme.palette.primary.main }}
+                  sx={{
+                    transition: 'transform 0.8s ease',
+                    cursor: 'pointer',
+                    '&:hover': {
+                      transform: 'rotate(360deg)',
+                    },
+                    backgroundColor: theme.palette.primary.main,
+                  }}
                 >
                   {index === 0 ? (
-                    <DevicesRounded fontSize='large' sx={{ color: theme.palette.common.white }} />
+                    <DevicesRounded sx={{ fontSize: 50, color: theme.palette.common.white }} />
                   ) : index === 1 ? (
-                    <CodeRounded fontSize='large' sx={{ color: theme.palette.common.white }} />
+                    <CodeRounded
+                      fontSize='large'
+                      sx={{ fontSize: 50, color: theme.palette.common.white }}
+                    />
                   ) : (
-                    <LightbulbRounded fontSize='large' sx={{ color: theme.palette.common.white }} />
+                    <LightbulbRounded
+                      fontSize='large'
+                      sx={{ fontSize: 50, color: theme.palette.common.white }}
+                    />
                   )}
                 </Stack>
                 <Typography variant='h6'>{item.title}</Typography>
@@ -351,6 +520,7 @@ const Home = () => {
           {socialMedia.map((item) => {
             return (
               <IconButton
+                key={item.url}
                 sx={{
                   p: 1,
                   borderRadius: 0.5,
