@@ -1,0 +1,9 @@
+.fade-box {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-box.show {
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+}
