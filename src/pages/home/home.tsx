@@ -154,7 +154,6 @@ const Home = () => {
   const [showBox1, setShowBox1] = useState(false)
   const [showBox2, setShowBox2] = useState(false)
   const [showBox3, setShowBox3] = useState(false)
-  const [headerX, setHeaderX] = useState(false)
 
   const observerRef = useRef(null)
   const firstpageObserverRef = useRef(null)
