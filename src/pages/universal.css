@@ -1,0 +1,61 @@
+.fade-box {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-box.show {
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+}
+.header {
+  z-index: 99999;
+  width: 100%;
+  position: fixed;
+  backdrop-filter: blur(2.5px);
+  padding: 20px;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+}
+.header-mobile {
+  height: 60px;
+  padding: 0px 16px;
+  position: fixed;
+  background-color: black;
+  z-index: 99999;
+  width: 100%;
+  justify-content: center;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.5);
+}
+
+.mainDiv {
+  cursor: pointer;
+}
+.bar1,
+.bar2,
+.bar3 {
+  background-color: white;
+  height: 1.5px;
+  width: 27px;
+  border-radius: 20px;
+  transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out, transform 0.3s ease-in-out,
+    translate 0.3s ease-in-out, display 0.3s ease-in-out;
+}
+.bar1.clicked,
+.bar2.clicked,
+.bar3.clicked {
+  transition: width 0.3s ease-in-out, 0.3s ease-in-out, transform 0.3s ease-in-out,
+    translate 0.3s ease-in-out, display 0.3s ease-in-out;
+}
+.bar1.clicked {
+  transform: rotate(45deg);
+  translate: 0 7px;
+}
+.bar2.clicked {
+  width: 0;
+  opacity: 0;
+}
+.bar3.clicked {
+  translate: 0 -7px;
+  transform: rotate(-45deg);
+}

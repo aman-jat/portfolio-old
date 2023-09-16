@@ -1,6 +1,6 @@
-import Home from '../pages/home/home'
-import { Stack } from '@mui/material'
-import { Navigate, Route, Routes, BrowserRouter as Router } from 'react-router-dom'
+import Home from '../pages/home';
+import { Stack } from '@mui/material';
+import { Navigate, Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 
 const Root = () => {
   return (
@@ -12,7 +12,7 @@ const Root = () => {
         </Routes>
       </Router>
     </Stack>
-  )
-}
+  );
+};
 
-export default Root
+export default Root;

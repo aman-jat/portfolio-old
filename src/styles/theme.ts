@@ -1,15 +1,24 @@
-import { createTheme } from '@mui/material/styles'
+import { createTheme } from '@mui/material/styles';
 // import { createBreakpoints } from '@mui/system'
 
 // const breakpoints = createBreakpoints({})
-const defaultTheme = createTheme()
+const defaultTheme = createTheme();
 
 export const spacing = {
   layout: 40 / 8,
   components: 32 / 8,
-}
+};
 
 const colorTheme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
   palette: {
     mode: 'light',
     primary: {
@@ -64,7 +73,7 @@ const colorTheme = createTheme({
       light: '#FEF0C7',
     },
   },
-})
+});
 
 const theme = createTheme(colorTheme, {
   typography: {
@@ -382,29 +391,29 @@ const theme = createTheme(colorTheme, {
       },
     },
   },
-})
+});
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 window.themes = {
   defaultTheme,
   theme,
-}
+};
 declare module '@mui/material/styles' {
   interface TypographyVariants {
-    menuTitle: React.CSSProperties
+    menuTitle: React.CSSProperties;
   }
 
   // allow configuration using `createTheme`
   interface TypographyVariantsOptions {
-    menuTitle?: React.CSSProperties
+    menuTitle?: React.CSSProperties;
   }
 }
 
 // Update the Typography's variant prop options
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
-    menuTitle: true
+    menuTitle: true;
   }
 }
-export default theme
+export default theme;
