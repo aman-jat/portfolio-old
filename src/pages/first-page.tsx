@@ -1,6 +1,6 @@
 import { KeyboardArrowDownRounded } from '@mui/icons-material';
 import theme from '../styles/theme';
-import { Box, Drawer, Link as MuiLink, List, Stack, Typography } from '@mui/material';
+import { Box, Drawer, Link as MuiLink, Stack, Typography } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
 import image from '../assets/images/mountain-dusk.jpg';
 
