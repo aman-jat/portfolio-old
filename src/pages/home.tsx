@@ -1,10 +1,9 @@
 import CheckoutMyResume from './checkout-my-resume';
 import Experience from './experience';
-import FirstPage from './first-page';
 import Footer from './footer';
 import GetInTouch from './get-in-touch';
-import Header from './header';
-import LittleAboutMe from './little-about-me';
+import FirstPage from './first-page';
+import About from './about';
 import './universal.css';
 import WhatIDo from './what-I-do';
 
@@ -84,21 +83,13 @@ const Home = () => {
 
   return (
     <>
-      <Header />
-      {/* // first page */}
       <FirstPage />
-      {/* second page - little about me */}
-      <LittleAboutMe />
-      {/* third page - what I do */}
-      <WhatIDo />
-      {/* fourth page - experience */}
+      <About />
+      {/*   <WhatIDo />
       <Experience />
-      {/* fifth page - check out my resume */}
       <CheckoutMyResume />
-      {/* sixth page - get in touch*/}
       <GetInTouch />
-      {/* footer page - */}
-      <Footer />
+      <Footer /> */}
     </>
   );
 };

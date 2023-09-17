@@ -59,9 +59,9 @@ const Footer = () => {
           color: theme.palette.common.white,
         }}
       />
-      <Stack gap={1} sx={{ color: theme.palette.common.white }} direction='row' alignItems='center'>
-        <Copyright />
-        <Typography variant='subtitle2' textAlign='center'>
+      <Stack gap={1} sx={{ color: theme.palette.common.white }} direction='row' alignItems='strech'>
+        <Copyright sx={{ fontSize: 16, color: '#ffffff40' }} />
+        <Typography fontSize={13} sx={{ color: '#ffffff40' }} textAlign='center'>
           Aman Jat 2023
         </Typography>
       </Stack>

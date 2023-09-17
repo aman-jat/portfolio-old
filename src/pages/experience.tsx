@@ -12,6 +12,7 @@ import typescript from '../assets/images/typescript.png';
 import mui from '../assets/images/mui.png';
 import github from '../assets/images/github.png';
 import './universal.css';
+import theme from '../styles/theme';
 
 const Experience = () => {
   const skillsList = [
@@ -66,17 +67,27 @@ const Experience = () => {
   ];
 
   return (
-    <Stack justifyContent='space-evenly' height='100vh' alignItems='center'>
+    <Stack
+      minHeight={700}
+      id='experience'
+      justifyContent='space-evenly'
+      height='100vh'
+      alignItems='center'
+    >
       <Stack px={10} direction='column' alignItems='center' gap={4}>
-        <Typography variant='h3'> EXPERIENCE </Typography>
-        <Typography textAlign='center'>
+        <Typography color={theme.palette.text.secondary} variant='h2'>
+          {'EXPERIENCE'}
+        </Typography>
+        <Typography color={theme.palette.text.secondary} textAlign='center'>
           I've been doing full stack developement for 2+ years now, and I'm always eager to learn
           more in this fast paced industry
         </Typography>
       </Stack>
       <Stack direction='row' gap={5}>
         <Stack>
-          <Typography variant='h5'>SOME TECHNOLOGIES I'VE WORKED WITH</Typography>
+          <Typography color={theme.palette.text.secondary} variant='h5'>
+            SOME TECHNOLOGIES I'VE WORKED WITH
+          </Typography>
           <ImageList sx={{ width: 500, height: 500 }} cols={4} rowHeight={120}>
             {skillsList.map((item) => (
               <ImageListItem sx={{ p: 3 }} key={item.img}>

@@ -8,7 +8,7 @@ const WhatIDo = () => {
 
   const thirdpagedata = [
     {
-      title: 'DESING',
+      title: 'DESIGN',
       description: `Design isn't just what a product looks like and feels like on the outside. Design
           encompasses the internal functionality of a product as well as the overall user
           experience. I strive to design interfaces and experiences that people can enjoy on all
@@ -101,7 +101,12 @@ const WhatIDo = () => {
 
   return (
     <Stack
-      sx={{ backgroundColor: theme.palette.primary.light }}
+      color={theme.palette.text.secondary}
+      id='passion'
+      sx={{
+        minHeight: 700,
+        backgroundColor: theme.palette.grey[300],
+      }}
       p={2}
       px={10}
       height='100vh'
@@ -109,7 +114,7 @@ const WhatIDo = () => {
       alignItems='center'
       gap={4}
     >
-      <Typography variant='h3'> What I do</Typography>
+      <Typography variant='h2'> What I do</Typography>
       <Stack ref={whatIdoRef} direction='row'>
         {thirdpagedata.map((item, index) => {
           let shouldShow = false;
@@ -158,7 +163,7 @@ const WhatIDo = () => {
                   />
                 )}
               </Stack>
-              <Typography variant='h6'>{item.title}</Typography>
+              <Typography variant='h5'>{item.title}</Typography>
               <Typography textAlign='center'>{item.description}</Typography>
             </Stack>
           );

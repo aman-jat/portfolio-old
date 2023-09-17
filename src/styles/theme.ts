@@ -1,8 +1,21 @@
+import { grey } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
-// import { createBreakpoints } from '@mui/system'
 
-// const breakpoints = createBreakpoints({})
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+  breakpoints: {
+    values: {
+      galaxyFold: 0,
+      mobile: 281,
+      xs: 420,
+      sm: 600, // sm means 600-900 (pad)
+      md: 900, // md means 900-1200 (pad - bigger size)
+      lg: 1280, // lg means laptop
+      xl: 1536, // xl means desktop like my samsung desktop
+      xxl: 1920, // xxl means desktop larger pixels
+      xxxl: 2560, // xxxl means bigger than 2560
+    },
+  },
+});
 
 export const spacing = {
   layout: 40 / 8,
@@ -10,46 +23,37 @@ export const spacing = {
 };
 
 const colorTheme = createTheme({
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 600,
-      md: 900,
-      lg: 1200,
-      xl: 1536,
-    },
-  },
   palette: {
     mode: 'light',
     primary: {
-      main: '#254D99',
-      light: '#DAE5F9',
-      dark: '#1E3E7B',
+      main: '#1B4175',
+      light: '#2f72d0',
+      dark: '#183968',
+    },
+    secondary: {
+      main: '#fff',
+      light: '#fff',
+      dark: '#fff',
     },
     common: {
       black: '#111927',
       white: '#ffffff',
     },
-    secondary: {
-      main: '#6C737F',
-      light: '#F3F4F6',
-      dark: '#1C2536',
-    },
     text: {
-      primary: '#1C2536',
-      secondary: '#6C737F',
-      disabled: '#9FA4AC',
+      primary: '#ffffff',
+      secondary: '#262626',
+      disabled: '#666666',
     },
     background: {
-      default: '#00000030',
-      paper: '#F6F8FB',
+      // default: '#00000030',
+      // paper: '#F6F8FB',
     },
     action: {
-      active: '#3333338A',
-      selected: '#6C737F14',
-      disabled: '#6366F142',
-      disabledBackground: '#6366F11F',
-      focus: '#6366F11F',
+      // active: '#3333338A',
+      // selected: '#6C737F14',
+      // disabled: '#6366F142',
+      // disabledBackground: '#6366F11F',
+      // focus: '#6366F11F',
     },
     divider: '#0000001F',
     info: {
@@ -77,99 +81,332 @@ const colorTheme = createTheme({
 
 const theme = createTheme(colorTheme, {
   typography: {
-    menuTitle: {
-      color: '#37374D',
-      fontSize: '1rem',
-      fontWeight: 700,
-    },
-    root: {
-      fontFamily: 'Roboto Mono',
-    },
+    menuTitle: {},
+    root: {},
     h1: {
+      textTransform: 'uppercase',
+      fontWeight: 300,
       fontFamily: 'Lato',
-      fontWeight: 700,
-      fontSize: 96,
-      lineHeight: '116.7%',
-      textTransform: 'initial',
-      letterSpacing: '-1.5px',
+      fontSize: 16, // Default font size
+      [defaultTheme.breakpoints.up('galaxyFold')]: {
+        fontSize: 40,
+      },
+      [defaultTheme.breakpoints.up('mobile')]: {
+        fontSize: 40,
+      },
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: 40,
+      },
+      [defaultTheme.breakpoints.up('sm')]: {
+        fontSize: 80,
+      },
+      [defaultTheme.breakpoints.up('md')]: {
+        // tablet
+        fontSize: 80,
+      },
+      [defaultTheme.breakpoints.up('lg')]: {
+        // laptop
+        fontSize: 60,
+      },
+      [defaultTheme.breakpoints.up('xl')]: {
+        // laptop (bigger)
+        fontSize: 70,
+      },
+      [defaultTheme.breakpoints.up('xxl')]: {
+        // desktop - samsung
+        fontSize: 100,
+      },
     },
     h2: {
+      textTransform: 'uppercase',
       fontFamily: 'Lato',
       fontWeight: 300,
-      fontSize: 60,
-      letterSpacing: '2px',
+      [defaultTheme.breakpoints.up('galaxyFold')]: {
+        fontSize: 24,
+      },
+      [defaultTheme.breakpoints.up('mobile')]: {
+        fontSize: 26,
+      },
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: '40px',
+      },
+      [defaultTheme.breakpoints.up('sm')]: {
+        fontSize: 30,
+      },
+      [defaultTheme.breakpoints.up('md')]: {
+        fontSize: 40,
+      },
+      [defaultTheme.breakpoints.up('lg')]: {
+        fontSize: 28,
+      },
+      [defaultTheme.breakpoints.up('xl')]: {
+        fontSize: 42,
+      },
+      [defaultTheme.breakpoints.up('xxl')]: {
+        fontSize: 50,
+      },
     },
     h3: {
+      textTransform: 'uppercase',
       fontFamily: 'Lato',
       fontWeight: 300,
-      fontSize: 28,
-      textTransform: 'uppercase',
-      letterSpacing: '1px',
+      [defaultTheme.breakpoints.up('galaxyFold')]: {
+        fontSize: 16,
+      },
+      [defaultTheme.breakpoints.up('mobile')]: {
+        fontSize: 20,
+      },
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: 25,
+      },
+      [defaultTheme.breakpoints.up('sm')]: {
+        fontSize: 25,
+      },
+      [defaultTheme.breakpoints.up('md')]: {
+        fontSize: 30,
+      },
+      [defaultTheme.breakpoints.up('lg')]: {
+        fontSize: 22,
+      },
+      [defaultTheme.breakpoints.up('xl')]: {
+        fontSize: 30,
+      },
+      [defaultTheme.breakpoints.up('xxl')]: {
+        fontSize: 40,
+      },
     },
     h4: {
-      fontFamily: 'Lato',
-      fontWeight: 400,
-      fontSize: 20,
       textTransform: 'uppercase',
+      fontWeight: 400,
+      [defaultTheme.breakpoints.up('galaxyFold')]: {
+        fontWeight: 500,
+        fontSize: 8,
+      },
+      [defaultTheme.breakpoints.up('mobile')]: {
+        fontWeight: 500,
+        fontSize: 12,
+      },
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontWeight: 500,
+        fontSize: '18px',
+      },
+      [defaultTheme.breakpoints.up('sm')]: {
+        fontSize: '22px',
+      },
+      [defaultTheme.breakpoints.up('md')]: {
+        fontSize: '24px',
+      },
+      [defaultTheme.breakpoints.up('lg')]: {
+        fontSize: '28px',
+      },
+      [defaultTheme.breakpoints.up('xl')]: {
+        fontSize: '30px',
+      },
       letterSpacing: '1px',
     },
     h5: {
-      fontFamily: 'Lato',
-      fontWeight: 400,
-      fontSize: 16,
       textTransform: 'uppercase',
+      fontFamily: 'Lato',
       letterSpacing: '1px',
+      [defaultTheme.breakpoints.up('galaxyFold')]: {
+        fontSize: 16,
+      },
+      [defaultTheme.breakpoints.up('mobile')]: {
+        fontSize: 17,
+      },
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: 17,
+      },
+      [defaultTheme.breakpoints.up('sm')]: {
+        fontSize: 22,
+      },
+      [defaultTheme.breakpoints.up('md')]: {
+        fontSize: 30,
+      },
+      [defaultTheme.breakpoints.up('lg')]: {
+        fontSize: 20,
+      },
+      [defaultTheme.breakpoints.up('xl')]: {
+        fontSize: 26,
+      },
+      [defaultTheme.breakpoints.up('xxl')]: {
+        fontSize: 36,
+      },
     },
     h6: {
-      fontFamily: 'Lato',
-      fontWeight: 400,
-      fontSize: 14,
       textTransform: 'uppercase',
+      fontFamily: 'Lato',
       letterSpacing: '1px',
+      [defaultTheme.breakpoints.up('galaxyFold')]: {
+        fontSize: 12,
+      },
+      [defaultTheme.breakpoints.up('mobile')]: {
+        fontSize: 13,
+      },
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: 12,
+      },
+      [defaultTheme.breakpoints.up('sm')]: {
+        fontSize: 15,
+      },
+      [defaultTheme.breakpoints.up('md')]: {
+        fontSize: 22,
+      },
+      [defaultTheme.breakpoints.up('lg')]: {
+        fontSize: 16,
+      },
+      [defaultTheme.breakpoints.up('xl')]: {
+        fontSize: 18,
+      },
+      [defaultTheme.breakpoints.up('xxl')]: {
+        fontSize: 24,
+      },
     },
     subtitle1: {
-      fontFamily: 'Lato',
-      fontWeight: 500,
-      fontSize: 16,
-      lineHeight: '175%',
-      letterSpacing: '0.15px',
+      fontWeight: 600,
+
+      fontSize: '16px', // Default font size
+      [defaultTheme.breakpoints.up('galaxyFold')]: {
+        fontSize: '14px',
+      },
+      [defaultTheme.breakpoints.up('mobile')]: {
+        fontSize: '16px',
+      },
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: '17px',
+      },
+      [defaultTheme.breakpoints.up('sm')]: {
+        fontSize: '18px',
+      },
+      [defaultTheme.breakpoints.up('md')]: {
+        fontSize: '18px',
+      },
+      [defaultTheme.breakpoints.up('lg')]: {
+        fontSize: '28px',
+      },
+      [defaultTheme.breakpoints.up('xl')]: {
+        fontSize: '32px',
+      },
+      color: grey[400],
+    },
+    button: {
+      textTransform: 'none',
+      fontWeight: 600,
+      fontSize: '16px', // Default font size
+      [defaultTheme.breakpoints.up('galaxyFold')]: {
+        fontSize: '13px',
+      },
+      [defaultTheme.breakpoints.up('mobile')]: {
+        fontSize: '16px',
+      },
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: '16px',
+      },
+      [defaultTheme.breakpoints.up('sm')]: {
+        fontSize: '16px',
+      },
+      [defaultTheme.breakpoints.up('md')]: {
+        fontSize: '17px',
+      },
+      [defaultTheme.breakpoints.up('lg')]: {
+        fontSize: '18px',
+      },
+      [defaultTheme.breakpoints.up('xl')]: {
+        fontSize: '20px',
+      },
     },
     subtitle2: {
-      fontFamily: 'Lato',
       fontWeight: 500,
-      fontSize: 14,
-      lineHeight: '157%',
-      letterSpacing: '0.1px',
+      fontSize: 8, // Default font size
+      [defaultTheme.breakpoints.up('galaxyFold')]: {
+        fontSize: 10,
+      },
+      [defaultTheme.breakpoints.up('mobile')]: {
+        fontSize: 10,
+      },
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: 10,
+      },
+      [defaultTheme.breakpoints.up('sm')]: {
+        fontSize: 10,
+      },
+      [defaultTheme.breakpoints.up('md')]: {
+        fontSize: 10,
+      },
+      [defaultTheme.breakpoints.up('lg')]: {
+        fontSize: 10,
+      },
+      [defaultTheme.breakpoints.up('xl')]: {
+        fontSize: 10,
+      },
     },
     body1: {
-      fontFamily: 'Maven Pro',
-      fontWeight: 300,
       fontSize: 15,
+      [defaultTheme.breakpoints.up('galaxyFold')]: {
+        fontSize: 12,
+        fontWeight: 400,
+      },
+      [defaultTheme.breakpoints.up('mobile')]: {
+        fontSize: 14,
+      },
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: 14,
+      },
+      [defaultTheme.breakpoints.up('sm')]: {
+        fontSize: 16,
+      },
+      [defaultTheme.breakpoints.up('md')]: {
+        fontSize: 22,
+      },
+      [defaultTheme.breakpoints.up('lg')]: {
+        fontSize: 16,
+      },
+      [defaultTheme.breakpoints.up('xl')]: {
+        fontSize: 18,
+      },
+      [defaultTheme.breakpoints.up('xxl')]: {
+        fontSize: 24,
+      },
+      fontWeight: 300,
+      fontFamily: 'Roboto Slab',
     },
     body2: {
-      fontFamily: 'Lato',
       fontWeight: 500,
       fontSize: 14,
       lineHeight: '143%',
       letterSpacing: '0.15px',
     },
-    button: {
-      fontFamily: 'Lato',
-      fontWeight: 400,
-      fontSize: 16,
-      lineHeight: '24px',
-      letterSpacing: '0.4px',
-      textTransform: 'none',
-    },
     caption: {
-      fontFamily: 'Lato',
       fontWeight: 500,
-      fontSize: 12,
-      lineHeight: '166%',
-      letterSpacing: '0.4px',
+
+      lineHeight: 1.3,
+      letterSpacing: 0,
+      [defaultTheme.breakpoints.up('galaxyFold')]: {
+        fontWeight: 500,
+        fontSize: 10,
+      },
+      [defaultTheme.breakpoints.up('mobile')]: {
+        fontWeight: 500,
+        fontSize: 14,
+      },
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontWeight: 500,
+        fontSize: 14,
+      },
+      [defaultTheme.breakpoints.up('sm')]: {
+        fontSize: 14,
+      },
+      [defaultTheme.breakpoints.up('md')]: {
+        fontSize: 14,
+      },
+      [defaultTheme.breakpoints.up('lg')]: {
+        fontSize: 18,
+      },
+      [defaultTheme.breakpoints.up('xl')]: {
+        fontSize: 20,
+      },
     },
     overline: {
-      fontFamily: 'Lato',
       fontWeight: 500,
       fontSize: 12,
       lineHeight: '26%',
@@ -178,74 +415,19 @@ const theme = createTheme(colorTheme, {
     },
   },
   components: {
-    MuiButton: {
-      styleOverrides: {
-        fullWidth: {
-          width: '100%',
-        },
-        root: {
-          '&, &:hover': {
-            boxShadow: 'none',
-          },
-          padding: '8px 28px',
-          width: 'max-content',
-          borderRadius: 4,
-          '&:disabled': {
-            color: 'rgba(17, 25, 39, 0.38)',
-          },
-        },
-        outlined: {
-          border: '1.5px solid',
-        },
-        outlinedError: {
-          border: '1px solid rgba(240, 68, 56, 0.5)',
-          '&:hover': {
-            textDecoration: 'none',
-          },
-        },
-        containedError: {
-          boxShadow: 'rgba(0, 0, 0, 0.08) 0px 1px 5px',
-          borderRadius: '12px',
-          '&:hover': {
-            backgroundColor: 'rgb(180, 35, 24)',
-            boxShadow: 'rgba(0, 0, 0, 0.08) 0px 1px 10px',
-          },
-        },
-      },
-    },
     MuiTextField: {
       defaultProps: {
         // variant: 'filled',
         InputLabelProps: { shrink: true },
       },
-      // styleOverrides: {
-      //   root: {
-      //     background: 'blue',
-      //     '& input': {
-      //       background: 'red',
-      //     }
-      //   }
-      // }
-      // root: {
-      // }
+      styleOverrides: {
+        root: {
+          '&.Mui-disabled': {
+            backgroundColor: '#9FA4AC42', // Change this to your desired background color
+          },
+        },
+      },
     },
-    // MuiTableBody: {
-    //   styleOverrides: {
-    //     root: {
-    //       border: 'none'
-    //     }
-    //   }
-    // },
-    // MuiTableCell: {
-    //   styleOverrides: {
-    //     root: {fontWeight
-    //       border: 'none',
-    //       [breakpoints.down('sm')]: {
-    //         display: 'block'
-    //       }
-    //     }
-    //   }
-    // },
     MuiFormControlLabel: {
       styleOverrides: {
         root: {
@@ -329,13 +511,22 @@ const theme = createTheme(colorTheme, {
       },
     },
     MuiLink: {
-      defaultProps: {
-        underline: 'hover',
-      },
       styleOverrides: {
         root: {
-          color: colorTheme.palette.primary.main,
           fontWeight: '600',
+          fontSize: '16px', // Default font size
+          [defaultTheme.breakpoints.up('sm')]: {
+            fontSize: '16px',
+          },
+          [defaultTheme.breakpoints.up('md')]: {
+            fontSize: '18px',
+          },
+          [defaultTheme.breakpoints.up('lg')]: {
+            fontSize: '18px',
+          },
+          [defaultTheme.breakpoints.up('xl')]: {
+            fontSize: '20px',
+          },
         },
       },
     },
@@ -380,8 +571,6 @@ const theme = createTheme(colorTheme, {
       styleOverrides: {
         root: {
           span: {
-            fontFamily:
-              'Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"',
             fontSize: '14px',
             fontWeight: 600,
             lineHeight: '24px',
@@ -400,6 +589,18 @@ window.themes = {
   theme,
 };
 declare module '@mui/material/styles' {
+  interface BreakpointOverrides {
+    xs: true;
+    sm: true;
+    md: true;
+    lg: true;
+    xl: true;
+    xxl: true;
+    xxxl: true;
+    mobile: true;
+    galaxyFold: true;
+  }
+
   interface TypographyVariants {
     menuTitle: React.CSSProperties;
   }
@@ -416,4 +617,5 @@ declare module '@mui/material/Typography' {
     menuTitle: true;
   }
 }
+
 export default theme;
